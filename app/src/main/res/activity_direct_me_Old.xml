@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DirectMeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/loggedInUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/greeting"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/instituteName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/instituteName"
+                android:layout_gravity="start"
+                android:textSize="34sp"/>
+        <Space
+            android:layout_width="30dp"
+            android:layout_height="38dp" />
+
+            <TextView
+                android:id="@+id/instituteStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/instituteStart"
+                android:layout_gravity="end|center"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <EditText
+            android:id="@+id/editTextText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="@string/hintFrom"
+            android:textSize="20sp"
+            android:text="" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            tools:context="com.example.currentplacedetailsonmap.MapsActivityCurrentPlace" />
+
+
+        <TextView
+            android:id="@+id/txtDistance"
+            android:layout_width="336dp"
+            android:layout_height="4dp"
+            android:layout_gravity="center"
+            android:hint="@string/hintDistance"
+            android:text=""
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <TextView
+            android:id="@+id/txtRoute"
+            android:layout_width="336dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:hint="@string/hintRoute"
+            android:text=""
+            android:textSize="16sp" />
+
+        <Space
+            android:layout_width="300dp"
+            android:layout_height="18dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <Button
+            android:id="@+id/btnRoute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnRoute"
+            android:textSize="24sp"
+            android:width="300dp"
+            android:height="50dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnPrev"
+                android:layout_width="140dp"
+                android:layout_height="48dp"
+                android:text="@string/prev" />
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+            <Button
+                android:id="@+id/btnHome"
+                android:layout_width="140dp"
+                android:layout_height="48dp"
+                android:text="@string/home" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

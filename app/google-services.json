@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "186000509104",
+    "project_id": "mnsistitute",
+    "storage_bucket": "mnsistitute.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186000509104:android:180b680c68a948c6669375",
+        "android_client_info": {
+          "package_name": "com.s22010393.mnsistitute"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDORhgv4CkVkcnDZDK2OWHjcIgJ_GsAGmo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
