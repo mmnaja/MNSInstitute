@@ -36,17 +36,18 @@
 
     <EditText
         android:id="@+id/inputFrom"
-        android:layout_width="209dp"
-        android:layout_height="56dp"
+        android:layout_width="283dp"
+        android:layout_height="49dp"
         android:ems="10"
         android:hint="@string/hintFrom"
+        android:textSize="25dp"
         android:inputType="text"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.814" />
+        app:layout_constraintVertical_bias="0.822" />
 
     <Button
         android:id="@+id/btnShowRoute"
