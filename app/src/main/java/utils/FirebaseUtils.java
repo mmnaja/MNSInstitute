@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import entities.MyClass;
@@ -48,7 +50,7 @@ public class FirebaseUtils {
         return isAuthenticated.get();
     }
 
-    public void addNewClas (MyClass myClass) {
+    public void addNewClass (MyClass myClass) {
         db.collection("class")
                 .add(myClass)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -85,7 +87,8 @@ public class FirebaseUtils {
                 });
     }
 
-    public void loadUsers() {
+    public List<User> loadUsers() {
+        List<User> users = new ArrayList<>();
         db.collection("users")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -94,6 +97,7 @@ public class FirebaseUtils {
                         if (task.isSuccessful()) {
                             for (DocumentSnapshot document : task.getResult()) {
                                 User user = document.toObject(User.class);
+                                users.add(user);
                                 Log.d("Firestore", "User: " + user.getName() + ", Email: " + user.getEmail());
                             }
                         } else {
@@ -101,6 +105,7 @@ public class FirebaseUtils {
                         }
                     }
                 });
+        return users;
     }
 
     public void updateData() {
