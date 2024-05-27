@@ -46,7 +46,7 @@
     <string name="studyPlane">Study  Plan</string>
     <string name="headerClass">Class</string>
     <string name="headerDayTime">Day/Time</string>
-    <string name="hintFrom">Guid Me From</string>
+    <string name="hintFrom">Your Current Location</string>
     <string name="hintRoute">Route details</string>
     <string name="hintDistance">Route distance</string>
     <string name="btnRoute">Re-Route</string>
