@@ -66,7 +66,7 @@
             android:exported="true">
             <meta-data
                 android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyCZllFT2yGKn3lB8__vx7Q0XN6YBQmGME0" />
+                android:value="Google_Map_Api_Key" />
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
