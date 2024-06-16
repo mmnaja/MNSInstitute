@@ -9,14 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
+import utils.FirebaseUtils;
+
 
 public class RegisterActivity extends AppCompatActivity {
     FirebaseAuth auth;
@@ -34,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
         Button btnLogin = findViewById(R.id.btnLogin);
         EditText txtFullName = findViewById(R.id.inputFullName);
         EditText txtPhoneNo =   findViewById(R.id.inputPhoneNo);
-        EditText txtEmail = findViewById(R.id.inputEmail);
+        EditText txtGrade = findViewById(R.id.inputGrade);
         EditText txtPostalAdd = findViewById(R.id.inputAddress);
         EditText txtUserName = findViewById(R.id.inputUserName);
         EditText txtPassword = findViewById(R.id.inputPassword);
@@ -42,24 +40,23 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(v -> {
             String strFullName = txtFullName.getText().toString().trim();
             String strPhoneNo = txtPhoneNo.getText().toString().trim();
-            String strEmail = txtEmail.getText().toString().trim();
+            String strGrade = txtGrade.getText().toString().trim();
             String strPostalAdd = txtPostalAdd.getText().toString().trim();
             String strUserName = txtUserName.getText().toString().trim();
             String strPassword = txtPassword.getText().toString().trim();
 
             if (strFullName.isEmpty() || strPhoneNo.isEmpty() || strPostalAdd.isEmpty() ||
-                    strEmail.isEmpty() || strPassword.isEmpty() || strUserName.isEmpty()) {
+                    strGrade.isEmpty() || strPassword.isEmpty() || strUserName.isEmpty()) {
                 Toast.makeText(RegisterActivity.this, "Fill the missing field/s.",
                         Toast.LENGTH_LONG).show();
             } else {
-                saveUserData(strFullName, strPhoneNo, strEmail, strPostalAdd, strUserName,
+                saveUserData(strFullName, strPhoneNo, strGrade, strPostalAdd, strUserName,
                         strPassword);
             }
         });
 
-        btnLogin.setOnClickListener(v -> {
-            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-        });
+        btnLogin.setOnClickListener(v -> startActivity(new Intent(
+                RegisterActivity.this, LoginActivity.class)));
     }
 
     //Saves the user data other than email and password.
@@ -74,25 +71,8 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this,
                             "User registering success.", Toast.LENGTH_LONG).show();
                     //Create a new document in the current user's collection.
-                    DocumentReference userDocRef = db.collection(getString(R.string.app_name))
-                            .document(user.getUid());
-                    //Set user data to the hashMap
-                    Map<String, Object> userData = new HashMap<>();
-                    userData.put("fullName", strFullName);
-                    userData.put("grade", strGrade);
-                    userData.put("phoneNumber", strPhoneNo);
-                    userData.put("postalAdd", strPostalAdd);
-                    //Save the data to the user
-                    userDocRef.set(userData).addOnCompleteListener(RegisterActivity.this,
-                            userTask -> {
-                                if (userTask.isSuccessful()) {
-                                    Toast.makeText(RegisterActivity.this,
-                                        "User data saved successfully.", Toast.LENGTH_LONG).show();
-                                } else {
-                                    Toast.makeText(RegisterActivity.this,
-                                            "User data not saved.", Toast.LENGTH_LONG).show();
-                                }
-                            });
+                    FirebaseUtils DBUtils = new FirebaseUtils();
+                    DBUtils.saveUser(strFullName, strGrade, strPhoneNo, strUserName, strPostalAdd, "student");
 
                     startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
                     finish();

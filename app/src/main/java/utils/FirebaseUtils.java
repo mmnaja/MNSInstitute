@@ -8,6 +8,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,20 +26,24 @@ import entities.User;
 
 
 public class FirebaseUtils {
-
     FirebaseAuth auth;
     FirebaseFirestore db;
     FirebaseUser user;
+    DatabaseReference usersTable;
 
     //Init firebase params.
     public FirebaseUtils() {
+        //instantiate database connection
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+        usersTable = FirebaseDatabase.getInstance().getReference("users");
         user = auth.getCurrentUser();
     }
 
-    public boolean saveUser(String email, String password) {
-        return auth.createUserWithEmailAndPassword(email, password).isSuccessful();
+    public void saveUser(String name, String grade, String phoneNo, String email, String postalAddress, String role) {
+        String uID = user.getUid();
+        User user = new User(uID, name, grade, phoneNo, email, postalAddress, role);
+        usersTable.child(uID).setValue(user);
     }
 
     public boolean authEmailUser(String email, String password) {

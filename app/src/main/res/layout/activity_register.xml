@@ -73,7 +73,7 @@
             android:layout_height="15dp" />
 
         <EditText
-            android:id="@+id/inputEmail"
+            android:id="@+id/inputGrade"
             android:layout_width="349dp"
             android:layout_height="48dp"
             android:autofillHints="emailAddress"

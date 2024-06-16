@@ -1,11 +1,13 @@
 package entities;
 
 public class User {
+    String userId;
     String name;
     String grade;
     String subject;
     String phoneNo;
     String email;
+    String postalAddress;
     String role;
 
     //Default constructor.
@@ -13,12 +15,14 @@ public class User {
     }
 
     //Constructor with parameters.
-    public User(String name, String grade, String subject, String phoneNo, String email, String role) {
+    public User(String userId, String name, String grade, String phoneNo, String email, String postalAddress, String role) {
+        //String name, String grade, String phoneNo, String email, String postalAddress, String role
+        this.userId = userId;
         this.name = name;
         this.grade = grade;
-        this.subject = subject;
         this.phoneNo = phoneNo;
         this.email = email;
+        this.postalAddress = postalAddress;
         this.role = role;
     }
 
@@ -36,26 +40,26 @@ public class User {
     public String getRole() {return role;}
     public void setRole(String email) {this.role = role;}
 
-    public static class TimeSlot {
-        private String name;
-        private enum DayOfWeek {
-            SUNDAY,
-            MONDAY,
-            TUESDAY,
-            WEDNESDAY,
-            THURSDAY,
-            FRIDAY,
-            SATURDAY
-        }
-        private Enum<DayOfWeek> day;
-        private String time;
-
-        //Getters and setters
-        public String getName() {return name;}
-        public void setName(String name) {this.name = name;}
-        public Enum<DayOfWeek> getDay() {return this.day;}
-        public void setDay(Enum<DayOfWeek> day) {this.day = day;}
-        public String getTime() {return time;}
-        public void setTime(String time) {this.time = time;}
-    }
+//    public static class TimeSlot {
+//        private String name;
+//        private enum DayOfWeek {
+//            SUNDAY,
+//            MONDAY,
+//            TUESDAY,
+//            WEDNESDAY,
+//            THURSDAY,
+//            FRIDAY,
+//            SATURDAY
+//        }
+//        private Enum<DayOfWeek> day;
+//        private String time;
+//
+//        //Getters and setters
+//        public String getName() {return name;}
+//        public void setName(String name) {this.name = name;}
+//        public Enum<DayOfWeek> getDay() {return this.day;}
+//        public void setDay(Enum<DayOfWeek> day) {this.day = day;}
+//        public String getTime() {return time;}
+//        public void setTime(String time) {this.time = time;}
+//    }
 }
